@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-title>{{ 'LOGIN_TITLE' | translate }}</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+  <form (submit)="doLogin()" [formGroup]="signinformGroup">
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>{{ 'EMAIL' | translate }} ou {{ 'USERNAME' | translate }}</ion-label>
+        <ion-input type="email" formControlName="email" name="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
+        <ion-input type="password" formControlName="password" name="password"></ion-input>
+      </ion-item>
+
+      <div padding>
+        <ion-button expand="block" (click)="doLogin()">{{ 'LOGIN_BUTTON' | translate }}</ion-button>
+      </div>
+
+    </ion-list>
+  </form>
+</ion-content>
