@@ -21,15 +21,16 @@
       <ion-item>
         <ion-label>{{ 'SETTINGS_OPTION3' | translate }}</ion-label>
         <ion-select formControlName="option3">
-          <ion-option value="1" checked="true">1</ion-option>
-          <ion-option value="2">2</ion-option>
-          <ion-option value="3">3</ion-option>
+          <ion-select-option value="1" checked="true">1</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
         </ion-select>
+
       </ion-item>
 
-      <button ion-item [navPush]="subSettings" [navParams]="profileSettings">
-        {{ 'SETTINGS_PROFILE_BUTTON' | translate }}
-      </button>
+      <ion-button expand="block">
+        {{ 'SETTINGS_PROFILE_BUTTON' | translate }}</ion-button>
+
     </ion-list>
 
     <ion-list *ngIf="page == 'profile'">

@@ -29,30 +29,18 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.signinformGroup = new FormGroup({
-      email: new FormControl(),
-      password: new FormControl(),
+      email: new FormControl('john@doe.fr'),
+      password: new FormControl('testtest'),
     });
   }
 
   // Attempt to login in through our User service
   doLogin() {
-    console.log('login');
     this.user.login(this.signinformGroup.value).subscribe(
       (resp) => {
-        // this.navCtrl.push(MainPage);
-        console.log('resp', resp);
         this.router.navigateByUrl('/pages/list-master');
       },
       (err) => {
-        console.log('err', err);
-        /*  this.navCtrl.push(MainPage);
-        // Unable to log in
-        let toast = this.toastCtrl.create({
-          message: this.loginErrorString,
-          duration: 3000,
-          position: "top",
-        });
-        toast.present(); */
         this.router.navigateByUrl('/pages/list-master');
       }
     );

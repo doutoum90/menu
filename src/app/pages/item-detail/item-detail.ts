@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 import { Items } from '../../providers';
 
@@ -12,9 +13,9 @@ export class ItemDetailPage {
 
   constructor(
     public readonly navCtrl: NavController,
-    navParams: NavParams,
-    items: Items
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly items: Items
   ) {
-    this.item = navParams.get('item') || items.defaultItem;
+    this.item = items.getItemByName(this.activatedRoute.snapshot.params.name);
   }
 }

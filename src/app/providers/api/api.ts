@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class Api {
-  url: string = 'https://cnrd-api.herokuapp.com/api/';
+  url: string = 'https://cnrd-api.herokuapp.com/api';
 
   constructor(public http: HttpClient) {}
 

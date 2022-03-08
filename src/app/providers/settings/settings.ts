@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
 @Injectable()
-export class Settings {
+export class Settings implements OnInit {
   private SETTINGS_KEY: string = '_settings';
 
   settings: any;
@@ -12,6 +12,9 @@ export class Settings {
 
   constructor(public storage: Storage, defaults: any) {
     this._defaults = defaults;
+  }
+  async ngOnInit() {
+    await this.storage.create();
   }
 
   load() {

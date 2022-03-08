@@ -12,7 +12,7 @@
 
 <ion-content>
 
-  <ion-card *ngFor="let item of currentItems">
+  <ion-card (click)="openItem(item)" *ngFor="let item of currentItems">
     <ion-card-header>
       <ion-card-title>{{ item.name }}</ion-card-title>
     </ion-card-header>

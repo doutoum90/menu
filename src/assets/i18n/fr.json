@@ -50,8 +50,15 @@
 
   "ITEM_CREATE_TITLE": "Nouvel item",
   "ITEM_CREATE_CHOOSE_IMAGE": "Ajouter une image",
+  "ITEM_NAME_PLACEHOLDER": "Nom",
+  "ITEM_ABOUT_PLACEHOLDER": "A propos",
 
   "CARDS_TITLE": "Social",
 
-  "SEARCH_TITLE": "Recherche"
+  "DONE_BUTTON": "Done",
+  "CANCEL_BUTTON": "Cancel",
+  "DELETE_BUTTON": "Delete",
+
+  "SEARCH_TITLE": "Recherche",
+  "SEARCH_PLACEHOLDER": "Rechercher un element, e.g. \"Donald Duck\""
 }

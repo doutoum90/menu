@@ -31,7 +31,7 @@ const routes: Routes = [
         component: ItemCreatePage,
       },
       {
-        path: 'item-detail',
+        path: 'item-detail/:name',
         component: ItemDetailPage,
       },
       {
@@ -53,10 +53,6 @@ const routes: Routes = [
       {
         path: 'settings',
         component: SettingsPage,
-      },
-      {
-        path: 'tabs',
-        component: TabsPage,
       },
     ],
   },

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 import { Item } from '../../models/item';
 import { Items } from '../../providers';
@@ -13,8 +14,8 @@ export class SearchPage {
 
   constructor(
     public readonly navCtrl: NavController,
-    public navParams: NavParams,
-    public items: Items
+    public readonly items: Items,
+    public readonly router: Router
   ) {}
 
   /**
@@ -35,8 +36,6 @@ export class SearchPage {
    * Navigate to the detail page for this item.
    */
   openItem(item: Item) {
-   /*  this.navCtrl.push('ItemDetailPage', {
-      item: item,
-    }); */
+    this.router.navigate(['pages/item-detail', item.name]);
   }
 }

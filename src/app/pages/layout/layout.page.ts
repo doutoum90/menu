@@ -54,7 +54,6 @@ export class LayoutPage implements OnInit {
         this.tab3Title = values['TAB3_TITLE'];
         this.tab4Title = values['TAB4_TITLE'];
         this.tab5Title = values['TAB5_TITLE'];
-        console.log(values);
       });
   }
   constructor(
@@ -62,21 +61,13 @@ export class LayoutPage implements OnInit {
     public readonly translateService: TranslateService,
     public readonly router: Router
   ) {
-    console.log(
-      this.translateService.defaultLang,
-      this.translateService.currentLang
-    );
   }
 
-  open1() {}
-
-  open2() {}
-
-  open3() {}
-
-  open4() {}
-
-  open5() {
-    this.router.navigate(['pages']);
+  open(name: string) {
+    if (name !== '') {
+      this.router.navigate([`pages/${name}`]);
+    } else {
+      this.router.navigate(['pages']);
+    }
   }
 }

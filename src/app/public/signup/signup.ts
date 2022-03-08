@@ -39,19 +39,9 @@ export class SignupPage implements OnInit {
     // Attempt to login in through our User service
     this.user.signup(this.signupformGroup.value).subscribe(
       (resp) => {
-        // this.navCtrl.push(MainPage);
-        console.log('resp', resp);
+
       },
       (err) => {
-        /* this.navCtrl.push(MainPage);
-        // Unable to sign up
-        let toast = this.toastCtrl.create({
-          message: this.signupErrorString,
-          duration: 3000,
-          position: "top",
-        });
-        toast.present(); */
-        console.log('err', err);
       }
     );
   }

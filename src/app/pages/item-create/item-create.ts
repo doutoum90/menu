@@ -1,13 +1,15 @@
-import { Component, ViewChild } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Camera } from "@ionic-native/camera";
+import { Component, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Camera } from '@ionic-native/camera';
+import { Items } from 'src/app/providers';
 
 @Component({
-  selector: "page-item-create",
-  templateUrl: "item-create.html",
+  selector: 'page-item-create',
+  templateUrl: 'item-create.html',
 })
 export class ItemCreatePage {
-  @ViewChild("fileInput") fileInput;
+  @ViewChild('fileInput') fileInput;
 
   isReadyToSave: boolean;
 
@@ -16,13 +18,14 @@ export class ItemCreatePage {
   form: FormGroup;
 
   constructor(
-    formBuilder: FormBuilder,
-    // public camera: Camera
+    private readonly formBuilder: FormBuilder,
+    private readonly items: Items,
+    private readonly router: Router // public camera: Camera
   ) {
     this.form = formBuilder.group({
-      profilePic: [""],
-      name: ["", Validators.required],
-      about: [""],
+      profilePic: [''],
+      name: ['', Validators.required],
+      about: [''],
     });
 
     // Watch the form for changes, and
@@ -52,7 +55,7 @@ export class ItemCreatePage {
           }
         );
     } else {*/
-      this.fileInput.nativeElement.click();
+    this.fileInput.nativeElement.click();
     // }
   }
 
@@ -67,7 +70,7 @@ export class ItemCreatePage {
   }
 
   getProfileImageStyle() {
-    return "url(" + this.form.controls["profilePic"].value + ")";
+    return 'url(' + this.form.controls['profilePic'].value + ')';
   }
 
   /**
@@ -77,18 +80,18 @@ export class ItemCreatePage {
     //this.viewCtrl.dismiss();
   }
 
-  createItem() {
-    console.log(this.form.value);
-  }
+  createItem() {}
 
   /**
    * The user is done and wants to create the item, so return it
    * back to the presenter.
    */
   done() {
+    console.log(this.form.value);
     if (!this.form.valid) {
       return;
     }
-    // this.viewCtrl.dismiss(this.form.value);
+    this.items.add(this.form.value);
+    this.router.navigate(['/pages']);
   }
 }

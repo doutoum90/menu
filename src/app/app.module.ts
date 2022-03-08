@@ -17,7 +17,8 @@ export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-export function provideSettings(storage: Storage) {
+export async function provideSettings(storage: Storage) {
+  await storage.create();
   return new Settings(storage, {
     option1: true,
     option2: 'Ionitron J. Framework',
@@ -46,12 +47,15 @@ export function provideSettings(storage: Storage) {
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-
     Api,
     Items,
     User,
     Storage,
-    { provide: Settings, useFactory: provideSettings, deps: [Storage] },
+    {
+      provide: Settings,
+      useFactory: provideSettings,
+      deps: [Storage],
+    },
   ],
   bootstrap: [AppComponent],
 })

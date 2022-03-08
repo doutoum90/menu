@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 import { Item } from '../../models/item';
 import { Items } from '../../providers';
-import { ItemCreatePage } from '../item-create/item-create';
 
 @Component({
   selector: 'page-list-master',
@@ -13,9 +12,8 @@ export class ListMasterPage {
   currentItems: Item[];
 
   constructor(
-    public readonly navCtrl: NavController,
-    public items: Items,
-    public modalCtrl: ModalController
+    private readonly items: Items,
+    private readonly router: Router
   ) {
     this.currentItems = this.items.query();
   }
@@ -30,31 +28,9 @@ export class ListMasterPage {
    * modal and then adds the new item to our data source if the user created one.
    */
   addItem() {
-    let addModal = this.modalCtrl.create({ component: ItemCreatePage });
-    addModal.then((item) => {
-      console.log('item', item);
-      if (item) {
-        this.items.add(item);
-      }
-    });
+    this.router.navigate(['pages/item-create']);
+  }
 
-    // onDidDismiss((item) => {})
-    /*  addModal.onDidDismiss((item) => {
-      if (item) {
-        this.items.add(item);
-      }
-    });
-    addModal.present(); */
-  }
-  favorite() {
-    console.log('favorite');
-  }
-  share() {
-    console.log('share');
-  }
-  unread() {
-    console.log('unread');
-  }
   /**
    * Delete an item from the list of items.
    */
@@ -66,8 +42,6 @@ export class ListMasterPage {
    * Navigate to the detail page for this item.
    */
   openItem(item: Item) {
-    /*  this.navCtrl.push("ItemDetailPage", {
-      item: item,
-    }); */
+    this.router.navigate(['pages/item-detail', item.name]);
   }
 }
